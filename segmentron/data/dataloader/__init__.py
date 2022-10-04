@@ -8,6 +8,7 @@ from .pascal_voc import VOCSegmentation
 from .pascal_aug import VOCAugSegmentation
 from .sbu_shadow import SBUSegmentation
 from .transparent11 import TransparentSegmentation
+from .transparent_things import TransparentThingsSegmentation
 from .transparent11_boundary import TransparentSegmentationBoundary
 
 datasets = {
@@ -18,6 +19,7 @@ datasets = {
     'cityscape': CitySegmentation,
     'sbu': SBUSegmentation,
     'transparent11': TransparentSegmentation, 
+    'transparent_things': TransparentThingsSegmentation,
     'transparent11_boundary': TransparentSegmentationBoundary
 }
 

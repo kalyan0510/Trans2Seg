@@ -3,6 +3,8 @@ from __future__ import print_function
 import os
 import sys
 
+from tqdm import tqdm
+
 cur_path = os.path.abspath(os.path.dirname(__file__))
 root_path = os.path.split(cur_path)[0]
 sys.path.append(root_path)
@@ -75,7 +77,7 @@ class Evaluator(object):
         logging.info("Start validation, Total sample: {:d}".format(len(self.val_loader)))
         import time
         time_start = time.time()
-        for i, (image, target, filename) in enumerate(self.val_loader):
+        for i, (image, target, filename) in tqdm(enumerate(self.val_loader), total=len(self.val_loader)):
             image = image.to(self.device)
             target = target.to(self.device)
 

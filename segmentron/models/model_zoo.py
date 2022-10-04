@@ -4,7 +4,7 @@ import torch
 from collections import OrderedDict
 from segmentron.utils.registry import Registry
 from ..config import cfg
-
+import platform
 MODEL_REGISTRY = Registry("MODEL")
 MODEL_REGISTRY.__doc__ = """
 Registry for segment model, i.e. the whole model.
@@ -43,7 +43,10 @@ def load_model_pretrain(model):
     else:
         if cfg.TEST.TEST_MODEL_PATH:
             logging.info('load test model from {}'.format(cfg.TEST.TEST_MODEL_PATH))
-            model_dic = torch.load(cfg.TEST.TEST_MODEL_PATH)
+            if platform.uname().node == 'kalyans-galaxybook-pro':
+                model_dic = torch.load(cfg.TEST.TEST_MODEL_PATH, map_location=torch.device('cpu'))
+            else:
+                model_dic = torch.load(cfg.TEST.TEST_MODEL_PATH)
             if 'state_dict' in model_dic.keys():
                 # load the last checkpoint
                 model_dic = model_dic['state_dict']

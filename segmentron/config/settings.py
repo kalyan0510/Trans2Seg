@@ -53,7 +53,7 @@ cfg.TRAIN.PRETRAINED_MODEL_PATH = ''
 # use pretrained backbone model over imagenet
 cfg.TRAIN.BACKBONE_PRETRAINED = True
 # backbone pretrained model path, if not specific, will load from url when backbone pretrained enabled
-cfg.TRAIN.BACKBONE_PRETRAINED_PATH = ''
+cfg.TRAIN.BACKBONE_PRETRAINED_PATH = 'W:\CV\Trans2Seg\segmentron\\resnet50-25c4b509.pth'
 # resume model path
 cfg.TRAIN.RESUME_MODEL_PATH = ''
 # whether to use synchronize bn
@@ -99,7 +99,7 @@ cfg.SOLVER.AUX_WEIGHT = 0.4
 cfg.SOLVER.LOSS_NAME = ''
 ########################## test config ###########################################
 # val/test model path
-cfg.TEST.TEST_MODEL_PATH = ''
+cfg.TEST.TEST_MODEL_PATH = 'W:\CV\Trans2Seg\segmentron\\4.pth'
 # test batch size
 cfg.TEST.BATCH_SIZE = 1
 # eval crop size
