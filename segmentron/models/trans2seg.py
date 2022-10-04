@@ -71,6 +71,8 @@ class Transformer(nn.Module):
         n, _, h, w = x.shape
         x = self.vit.hybrid_embed(x)
 
+        # kalyan edit
+        # the output x produced by below line (self.vit.forward_encoder(x)) is what we need
         cls_token, x = self.vit.forward_encoder(x)
 
         attns_list = self.vit.forward_decoder(x)

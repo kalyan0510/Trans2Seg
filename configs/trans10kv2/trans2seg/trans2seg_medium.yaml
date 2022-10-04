@@ -9,7 +9,7 @@ TRAIN:
     BASE_SIZE: 512
     MODEL_SAVE_DIR: 'workdirs/trans10kv2/trans2seg_small'
 TEST:
-    BATCH_SIZE: 16
+    BATCH_SIZE: 1
     CROP_SIZE: (512, 512)
 
 SOLVER:

@@ -99,7 +99,7 @@ cfg.SOLVER.AUX_WEIGHT = 0.4
 cfg.SOLVER.LOSS_NAME = ''
 ########################## test config ###########################################
 # val/test model path
-cfg.TEST.TEST_MODEL_PATH = 'W:\CV\Trans2Seg\segmentron\\4.pth'
+cfg.TEST.TEST_MODEL_PATH = 'W:\CV\Trans2Seg\segmentron\\50.pth'
 # test batch size
 cfg.TEST.BATCH_SIZE = 1
 # eval crop size

@@ -50,7 +50,8 @@ class TransparentThingsSegmentation(SegmentationDataset):
         # cup, bottle, jar, bowl and eyeglass
         self.things = [7, 10, 2, 9, 6]
         # windows, shelf, box, freezer, glass walls and glass doors
-        self.stuff = [3, 1, 11, 3, 8, 5]
+        self.stuff = [4, 1, 11, 3, 8, 5]
+        self.label_map = {0: 0, 2: 1, 6: 2, 7: 3, 9: 4, 10: 5}
 
 
     def _mask_transform(self, mask):
@@ -83,6 +84,8 @@ class TransparentThingsSegmentation(SegmentationDataset):
             img, mask = self._val_sync_transform_resize(img, mask)
         # this line sets off any stuff pixels as background as they are not important for tracking purposes
         mask[np.isin(mask, self.stuff)] = 0
+        for k in self.label_map.keys():
+            mask[mask == k] = self.label_map[k]
         # general resize, normalize and to Tensor
         if self.transform is not None:
             img = self.transform(img)
@@ -102,6 +105,8 @@ class TransparentThingsSegmentation(SegmentationDataset):
         #bg shelf Jar freezer window door eyeglass cup wall bowl bottle box
         # 0  1    2      3      4     5       6     7   8     9    10    11
         return ('Background', 'Jar or Tank', 'Eyeglass', 'Cup', 'Glass Bowl', 'Water Bottle')
+        #             0             1            2         3         4             5
+        # 0=>0 , 2=>1, 6=>2, 7=>3, 9=>4, 10=>5
 
 def _get_trans10k_pairs(folder, mode='train'):
     img_paths = []
